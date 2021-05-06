@@ -19,7 +19,7 @@ create table blogs(
   blog_author_picture varchar(4096),
   blog_author_link varchar(4096),
   blog_reading_time int not null,
-  blog_like int,
+  blog_like int default 0,
   blog_created TIMESTAMP with time zone default current_timestamp
 );
 

@@ -11,7 +11,7 @@ app.use(cookieParser())
 const Blog = require('./routes/Blog.js')
 
 // ENDPOINTS
-app.use('/', Blog)
+app.use('/blogs', Blog)
 
 
 module.exports = app
