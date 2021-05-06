@@ -1,12 +1,14 @@
-const blogsModel = require('../models/blog.js')
+const AdminModel = require('../models/Admin.js')
 const authJWT = require('../Library/function/auth')
+
 
 module.exports = {
   GET: async (req, res) => {
     try {
-      const blogs = await blogsModel.getBlogs(req)
+      // authJWT(req)
+      const admins = await AdminModel.getAdmins(req)
 
-      res.send(blogs)
+      res.send(admins)
     } catch (error) {
       console.log(error)
       res.send(error)
@@ -15,9 +17,9 @@ module.exports = {
   POST: async (req, res) => {
     try {
       // authJWT(req)
-      const blogs = await blogsModel.insertBlog(req)
+      const admin = await AdminModel.insertAdmin(req)
 
-      res.send(blogs)
+      res.send(admin)
     } catch (error) {
       res.send(error)
     }
@@ -25,7 +27,7 @@ module.exports = {
   PUT: async (req, res) => {
     try {
       // authJWT(req)
-      const returning = await blogsModel.setBlog(req)
+      const returning = await AdminModel.setAdmin(req)
 
       res.send(returning)
     } catch (error) {
@@ -35,9 +37,9 @@ module.exports = {
   DELETE: async (req, res) => {
     try {
       // authJWT(req)
-      const blog = await blogsModel.deleteBlog(req)
+      const admin = await AdminModel.deleteAdmin(req)
 
-      res.send(blog)
+      res.send(admin)
     } catch (error) {
       res.send(error)
     }

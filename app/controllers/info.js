@@ -1,7 +1,9 @@
 const readF = require("util").promisify(require("fs").readFile)
 const writeF = require("util").promisify(require("fs").writeFile)
 const path = require("path").resolve("info.json")
-console.log(path)
+const authJWT = require('../Library/function/auth')
+
+
 module.exports = {
   GET: async (req, res) => {
     try {
