@@ -12,7 +12,7 @@ const Blog = require('./routes/Blog.js')
 const FAQ = require('./routes/faq.js')
 
 // ENDPOINTS
-app.use('/', Blog)
+app.use('/blogs', Blog)
 app.use('/faq', FAQ)
 
 
