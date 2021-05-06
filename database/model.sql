@@ -20,6 +20,7 @@ create table blogs(
   blog_author_link varchar(4096),
   blog_reading_time int not null,
   blog_like int default 0,
+  blog_tags text[],
   blog_created TIMESTAMP with time zone default current_timestamp
 );
 
@@ -34,3 +35,36 @@ create table info(
   id serial not null primary key,
   info json not null
 );
+
+------------------
+
+insert into faq(
+  faq_question,
+  faq_answer
+) values (
+  'Hello world nima degani?',
+  'Lorem ipsim dolor sit amet...'
+);
+
+insert into blogs(
+  blog_title,
+  blog_image,
+  blog_content,
+  blog_author,
+  blog_author_picture,
+  blog_author_link,
+  blog_reading_time,
+  blog_tags,
+  blog_like
+) values (
+  'title',
+  'image.png',
+  '{ "jsj": "json"}',
+  'authorbek',
+  'author-image.png',
+  'htpps://ssdasd/asd/asd',
+  200,
+  '{"hello", "web", "asd"}',
+  1
+)
+;
