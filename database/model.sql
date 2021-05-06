@@ -38,6 +38,14 @@ create table info(
 
 ------------------
 
+insert into faq(
+  faq_question,
+  faq_answer
+) values (
+  'Hello world nima degani?',
+  'Lorem ipsim dolor sit amet...'
+);
+
 insert into blogs(
   blog_title,
   blog_image,
