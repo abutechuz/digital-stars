@@ -12,12 +12,15 @@ const Blog = require('./routes/Blog.js')
 const Like = require('./routes/Like.js')
 const FAQ = require('./routes/faq.js')
 const Login = require('./routes/login.js')
+const Info = require('./routes/info.js')
+
 
 // ENDPOINTS
 app.use('/blogs', Blog)
 app.use('/faq', FAQ)
 app.use("/like" , Like)
 app.use('/login', Login)
+app.use("/info" , Info)
 
 
 module.exports = app
