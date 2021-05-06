@@ -1,13 +1,13 @@
 module.exports = {
-	PORT: process.env.PORT || 9999,
-
+	PORT: process.env.PORT || 4000,
 	DATABASE: {
 		host: 'queenie.db.elephantsql.com',
-		user: 'kdxlidhh',
-		password: 'wIrwBPPIrQgi-yndaGxeNG9aQp50kc0R',
-		database: 'kdxlidhh',
+		user: 'wcdnbtqk',
+		password: 'iruAlmbEmXADIFiDdv6b7c5TkqLBE3Te',
+		database: 'wcdnbtqk',
+		port : 5432
 	},
-
-	JWT_KEY: 'n9NV9#eSpUg@GD+2&KmcDNs-S=xmp=y?'
+	JWT_KEY: 'SecretkeYY'
 }
+
 

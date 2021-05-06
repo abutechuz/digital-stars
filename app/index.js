@@ -8,10 +8,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 // PAGES
-const Home = require('./routes/Home.js')
+const Blog = require('./routes/Blog.js')
 
 // ENDPOINTS
-app.use('/', Home)
+app.use('/', Blog)
 
 
 module.exports = app

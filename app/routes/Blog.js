@@ -1,8 +1,8 @@
 const router = require('express').Router()
-const Home = require('../controllers/Home.js')
+const Blog = require('../controllers/Blog.js')
 
 router
   .route('/')
-  .get(Home)
+  .get(Blog)
 
 module.exports = router
