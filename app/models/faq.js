@@ -21,17 +21,9 @@ const removeFaq = async ({ body: { faq_id }}) => {
   return await fetch(SQL, faq_id)
 }
 
-const updateFaq = async ({ body: { faq_id, question, answer }}) => {
-  const SQL = `update faq where faq_id = $1 returning *`
-
-  return await fetch(SQL, )
-}
-
-
 module.exports = {
   getFaq,
   addFaq,
-  removeFaq,
-  updateFaq
+  removeFaq
 }
 

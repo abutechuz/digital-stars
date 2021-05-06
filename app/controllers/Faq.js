@@ -16,10 +16,5 @@ module.exports = {
     const faqs = await faqModel.updateFaq(req)
 
     res.send(faqs)
-  }),
-  DELETE: ('/', async (req, res) => {
-    const faqs = await faqModel.removeFaq(req)
-
-    res.send(faqs)
   })
 }
