@@ -1,5 +1,5 @@
 const LikeModel = require('../models/Like.js')
-const authJWT = require('../Library/function/auth')
+const authJWT = require('../Library/function/auth.js')
 
 module.exports = {
   POST: async (req, res) => {
