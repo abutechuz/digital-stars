@@ -18,7 +18,7 @@ module.exports = {
     res.send(faqs)
   }),
   DELETE: ('/', async (req, res) => {
-    const faqs = await faqModel.getFaq(req)
+    const faqs = await faqModel.removeFaq(req)
 
     res.send(faqs)
   })
