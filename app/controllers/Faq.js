@@ -8,12 +8,12 @@ module.exports = {
     res.send(faqs)
   }),
   POST: ('/', async (req, res) => {
-    const faqs = await faqModel.getFaq(req)
+    const faqs = await faqModel.addFaq(req)
 
     res.send(faqs)
   }),
   PUT: ('/', async (req, res) => {
-    const faqs = await faqModel.getFaq(req)
+    const faqs = await faqModel.updateFaq(req)
 
     res.send(faqs)
   }),

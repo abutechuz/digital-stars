@@ -6,7 +6,20 @@ const getFaq = async (req) => {
   return await fetch(SQL)
 }
 
+const addFaq = async({ body: { question, answer }}) => {
+  const SQL = `insert into faq(
+    faq_question,
+    faq_answer
+  ) values ($1, $2) returning *;`
+
+  return await fetch(SQL, question, answer)
+
+}
+
+
+
 module.exports = {
-  getFaq
+  getFaq,
+  addFaq
 }
 
