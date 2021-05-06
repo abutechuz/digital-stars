@@ -1,6 +1,5 @@
 const faqModel = require('../models/faq.js')
 
-
 module.exports = {
   GET: ('/', async (req, res) => {
     const faqs = await faqModel.getFaq(req)
