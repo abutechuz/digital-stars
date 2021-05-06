@@ -1,9 +1,8 @@
 const router = require('express').Router()
-const faq = require('../controllers/faq.js')
+const login = require('../controllers/login.js')
 
 router
   .route('/')
-  .get(faq.GET)
-  .post(faq.POST)
+  .post(login)
 
 module.exports = router
