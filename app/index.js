@@ -1,12 +1,23 @@
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const fileUpload = require('express-fileupload')
+const rateLimit = require('express-rate-limit')
+const xss = require('xss-clean')
+const helmet = require('helmet')
 const path = require('path')
 
 
 const app = express()
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Too many requests. Please try after few minutes!'
+})
 
-app.use(express.json())
+app.use(xss())
+app.use(helmet())
+app.use(limiter)
+app.use(express.json({ limit: '10kb'}))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../data/')))
