@@ -33,7 +33,7 @@ module.exports = {
 
       res.send(faqs)
     } catch (error) {
-      res.sendStatus(401)
+      res.status(401).send(error)
     }
   })
 }
