@@ -1,7 +1,5 @@
 const blogsModel = require('../models/blog.js')
 const authJWT = require('../Library/function/auth.js')
-const auth = require('../Library/function/auth.js')
-
 module.exports = {
   GET: async (req, res) => {
     try {
