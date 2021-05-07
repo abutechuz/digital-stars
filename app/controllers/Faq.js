@@ -10,7 +10,7 @@ module.exports = {
 
       res.send(faqs)
     } catch (error) {
-      res.send(error)
+      res.status(401).send(error)
     }
   }),
 
@@ -21,8 +21,7 @@ module.exports = {
 
       res.send(faqs)
     } catch (error) {
-      console.error(error)
-      res.sendStatus(401)
+      res.status(401).send(error)
     }
   }),
 
