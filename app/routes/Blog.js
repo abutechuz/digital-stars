@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const Blog = require('../controllers/Blog.js')
+const Blog = require('../controllers/blog.js')
 
 router
   .route('/')

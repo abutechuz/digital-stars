@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, '../data/')))
 app.use(fileUpload({ parseNested: true }))
 
 // PAGES
-const Blog = require('./routes/Blog.js')
-const Like = require('./routes/Like.js')
+const Blog = require('./routes/blog.js')
+const Like = require('./routes/like.js')
 const FAQ = require('./routes/faq.js')
 const Login = require('./routes/login.js')
 const Info = require('./routes/info.js')

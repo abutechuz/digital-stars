@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const admins = require('../controllers/Admin.js')
+const admins = require('../controllers/admin.js')
 
 router
     .route('/')

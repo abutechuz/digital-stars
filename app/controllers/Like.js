@@ -1,4 +1,4 @@
-const LikeModel = require('../models/Like.js')
+const LikeModel = require('../models/like.js')
 const authJWT = require('../Library/function/auth.js')
 
 module.exports = {
