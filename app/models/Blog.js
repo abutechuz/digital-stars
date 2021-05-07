@@ -25,7 +25,6 @@ const getBlogs = async ({
 const insertBlog = async ({
   body: {
     blog_title,
-    blog_image,
     blog_content,
     blog_author,
     blog_author_picture,
@@ -33,7 +32,7 @@ const insertBlog = async ({
     blog_tags,
     blog_text
   }
-}) => {
+},blog_image) => {
 
   const SQL = `insert into blogs (
     blog_title,

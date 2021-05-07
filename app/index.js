@@ -1,11 +1,16 @@
 const express = require('express')
 const cookieParser = require('cookie-parser')
+const fileUpload = require('express-fileupload')
+const path = require('path')
+
 
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(express.static(path.join(__dirname, '../data/')))
+app.use(fileUpload({ parseNested: true }))
 
 // PAGES
 const Blog = require('./routes/Blog.js')
