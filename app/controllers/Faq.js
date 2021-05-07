@@ -4,11 +4,13 @@ const authJWT = require('../Library/function/auth.js')
 module.exports = {
   GET: ('/', async (req, res) => {
     try {
+      await authJWT(req)
+
       const faqs = await faqModel.getFaq(req)
 
       res.send(faqs)
     } catch (error) {
-      res.sendStatus(error)
+      res.send(error)
     }
   }),
 
@@ -19,18 +21,20 @@ module.exports = {
 
       res.send(faqs)
     } catch (error) {
-      res.sendStatus(403)
+      console.error(error)
+      res.sendStatus(401)
     }
   }),
 
   PUT: ('/', async (req, res) => {
     try {
       authJWT(req)
+
       const faqs = await faqModel.updateFaq(req)
 
       res.send(faqs)
     } catch (error) {
-      res.sendStatus(403)
+      res.sendStatus(401)
     }
   })
 }

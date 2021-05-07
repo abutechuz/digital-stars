@@ -6,10 +6,9 @@ const login = ('/', async (req, res) => {
     const user = await loginFunction(req)
     const token = sign(user, { expiresIn: '4h' })
 
-    console.log(user)
-    res.cookie('token', token, { httpOnly: true}).end()
+    res.cookie('token', token, { httpOnly: true }).end()
   } catch (error) {
-    res.send(error)
+    res.status(401).send(error)
   }
 })
 
