@@ -1,4 +1,4 @@
-const AdminModel = require('../models/Admin.js')
+const AdminModel = require('../models/admin.js')
 const authJWT = require('../Library/function/auth')
 
 

@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const Like = require('../controllers/Like.js')
+const Like = require('../controllers/like.js')
 
 router
   .route('/')
