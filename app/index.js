@@ -42,5 +42,4 @@ app.use("/info" , Info)
 app.use("/admin" , Admin)
 
 
-
 module.exports = app
