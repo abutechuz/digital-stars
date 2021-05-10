@@ -3,9 +3,7 @@ const authJWT = require('../Library/function/auth.js')
 module.exports = {
   GET: async (req, res) => {
     try {
-      authJWT(req)
       const blogs = await blogsModel.getBlogs(req)
-      
       res.send(blogs)
     } catch (error) {
       console.log(error)
@@ -58,6 +56,7 @@ module.exports = {
       
       const blogs = await blogsModel.insertBlog(req , imgSrc)
 
+      console.log("ok")
       
       res.send(blogs)
     } catch (error) {

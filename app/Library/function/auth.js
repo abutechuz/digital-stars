@@ -21,7 +21,6 @@ module.exports = async ({
       })
     }
   } catch (error) {
-
     throw new Error({
       message: error.message,
     })
