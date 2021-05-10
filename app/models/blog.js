@@ -1,7 +1,7 @@
 let {
   fetch,
   fetchOne
-} = require("../Library/database/postgres")
+} = require("../library/database/postgres")
 
 let read = require("reading-time")
 
@@ -12,7 +12,7 @@ const getBlogs = async ({
   }
 }) => {
   const SQL = `
-  select * from blogs 
+  select * from blogs
   order by blog_id desc
   offset ($1 - 1) * $2 fetch next $2 rows only ;
   `
@@ -32,7 +32,7 @@ const insertBlog = async ({
     blog_tags,
     blog_text
   }
-},blog_image) => {
+}, blog_image) => {
 
   const SQL = `insert into blogs (
     blog_title,
@@ -74,7 +74,7 @@ const setBlog = async ({
 }) => {
 
   const SQL = `update blogs set blog_title=$1 ,
-  blog_image=$2 , 
+  blog_image=$2 ,
   blog_content=$3 ,
   blog_author=$4 ,
   blog_author_picture=$5,
