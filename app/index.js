@@ -30,6 +30,8 @@ const FAQ = require('./routes/faq.js')
 const Login = require('./routes/login.js')
 const Info = require('./routes/info.js')
 const Admin = require('./routes/admin.js')
+const Numbers = require('./routes/numbers.js')
+
 
 
 
@@ -40,6 +42,8 @@ app.use("/like" , Like)
 app.use('/login', Login)
 app.use("/info" , Info)
 app.use("/admin" , Admin)
+app.use("/numbers" , Numbers)
+
 
 
 
