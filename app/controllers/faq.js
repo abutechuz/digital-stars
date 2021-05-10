@@ -1,5 +1,5 @@
 const faqModel = require('../models/faq.js')
-const authJWT = require('../Library/function/auth.js')
+const authJWT = require('../library/function/auth.js')
 
 module.exports = {
   GET: ('/', async (req, res) => {

@@ -1,5 +1,5 @@
-const loginFunction = require('../Library/function/login.js')
-const { sign } = require('../Library/jwt.js')
+const loginFunction = require('../library/function/login.js')
+const { sign } = require('../library/jwt.js')
 
 const login = ('/', async (req, res) => {
   try {

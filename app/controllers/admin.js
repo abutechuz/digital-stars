@@ -1,5 +1,5 @@
 const AdminModel = require('../models/admin.js')
-const authJWT = require('../Library/function/auth')
+const authJWT = require('../library/function/auth')
 
 
 module.exports = {
