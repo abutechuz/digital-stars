@@ -36,14 +36,13 @@ const Numbers = require('./routes/numbers.js')
 
 
 // ENDPOINTS
-app.use('/blogs', Blog)
 app.use('/faq', FAQ)
+app.use('/blogs', Blog)
 app.use("/like" , Like)
-app.use('/login', Login)
 app.use("/info" , Info)
+app.use('/login', Login)
 app.use("/admin" , Admin)
 app.use("/numbers" , Numbers)
-
 
 
 

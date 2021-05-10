@@ -1,13 +1,13 @@
-const loginFunction = require('../Library/function/login.js')
-const { sign } = require('../Library/jwt.js')
+const loginFunction = require('../library/function/login.js')
+const { sign } = require('../library/jwt.js')
 
 const login = ('/', async (req, res) => {
-  const user = await loginFunction(req)
   try {
+    const user = await loginFunction(req)
     const token = await sign(await user, { expiresIn: 60 * 60 * 60 })
-    res.cookie('token', token).send(token)
+    res.cookie('token', token ,{ httpOnly: true }).send(token)
   } catch (error) {
-    res.send(error)
+    res.status(401).send(error)
   }
 })
 

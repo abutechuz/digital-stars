@@ -1,4 +1,4 @@
-const { fetch } = require('../Library/database/postgres.js')
+const { fetch } = require('../library/database/postgres.js')
 
 const getFaq = async (req) => {
   const SQL = `select * from faq`
@@ -6,7 +6,7 @@ const getFaq = async (req) => {
   return await fetch(SQL)
 }
 
-const addFaq = async ({ body: { question, answer }}) => {
+const addFaq = async ({ body: { question, answer } }) => {
   const SQL = `insert into faq(
     faq_question,
     faq_answer
@@ -15,7 +15,7 @@ const addFaq = async ({ body: { question, answer }}) => {
   return await fetch(SQL, question, answer)
 }
 
-const removeFaq = async ({ body: { faq_id }}) => {
+const removeFaq = async ({ body: { faq_id } }) => {
   const SQL = `delete from faq where faq_id = $1 returning *`
 
   return await fetch(SQL, faq_id)
@@ -26,4 +26,3 @@ module.exports = {
   addFaq,
   removeFaq
 }
-
