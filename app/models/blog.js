@@ -16,6 +16,16 @@ const getBlogs = async ({
   return blogs
 };
 
+const getById = async ({
+  query : {id} , body : {is_head}
+}) => {
+  const SQL = `select * from blogs where blog_id=$1`
+
+  const blog = await fetchOne(SQL , id)
+
+  return {...blog,is_head : is_head || null}
+}
+
 const insertBlog = async ({
   body: {
     blog_title,
@@ -85,7 +95,7 @@ const setBlog = async ({
     blog_tags.map(str => str.replace(/[|&;$%@"#<>()+,-]/g, "")) || [],
     read(blog_text).time,
     blog_id
-  );
+  )
 
   return res
 }

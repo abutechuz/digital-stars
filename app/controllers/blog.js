@@ -1,6 +1,15 @@
 const blogsModel = require('../models/blog.js')
 
 module.exports = {
+  GETBYID: async (req, res) => {
+    try {
+      const blog = await blogsModel.getById(req)
+
+      res.send(blog)
+    } catch (error) {
+      res.status(401).send(error)
+    }
+  },
   GET: async (req, res) => {
     try {
       const blogs = await blogsModel.getBlogs(req)
