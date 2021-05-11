@@ -2,17 +2,17 @@ const blogsModel = require('../models/blog.js')
 // const authJWT = require('../library/function/auth.js')
 
 module.exports = {
-  GETBYID: ('getuser', async (req, res) => {
+  GETBYID: async (req, res) => {
     try {
       // await authJWT(req)
 
       const blog = await blogsModel.getById(req)
-
+      
       res.send(blog)
     } catch (error) {
       res.status(401).send(error)
     }
-  }),
+  },
   GET: async (req, res) => {
     try {
       const blogs = await blogsModel.getBlogs(req)
