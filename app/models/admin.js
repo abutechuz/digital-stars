@@ -1,10 +1,7 @@
-let {
-  fetch,
-  fetchOne
-} = require("../library/database/postgres")
+let { fetch, fetchOne } = require("../library/database/postgres")
 
 const getAdmins = async ({query : {page , limit}}) => {
-  
+
   const SQL = `select user_id,user_login from user
   order by user_id desc
   offset ($1 - 1) * $2 fetch next $2 rows only ;`

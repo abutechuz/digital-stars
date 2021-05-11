@@ -8,7 +8,4 @@ router
   .put(Blog.PUT)
   .delete(Blog.DELETE)
 
-
-
-
 module.exports = router

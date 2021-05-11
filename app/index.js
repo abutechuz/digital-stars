@@ -8,6 +8,7 @@ const path = require('path')
 
 
 const app = express()
+const auth = require('./library/function/auth.js')
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -33,11 +34,12 @@ const Admin = require('./routes/admin.js')
 const Numbers = require('./routes/numbers.js')
 
 
-
-
 // ENDPOINTS
+app.use('/blogs', (req, res, next) => {
+  auth(req, res, next)
+}, Blog)
+
 app.use('/faq', FAQ)
-app.use('/blogs', Blog)
 app.use("/like" , Like)
 app.use("/info" , Info)
 app.use('/login', Login)

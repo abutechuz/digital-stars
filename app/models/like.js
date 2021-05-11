@@ -1,7 +1,4 @@
-let {
-  fetch,
-  fetchOne
-} = require("../library/database/postgres")
+let { fetchOne } = require("../library/database/postgres")
 
 const insertLike = async ({
   body: {

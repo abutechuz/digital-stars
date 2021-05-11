@@ -1,5 +1,4 @@
 const blogsModel = require('../models/blog.js')
-const authJWT = require('../library/function/auth.js')
 
 module.exports = {
   GET: async (req, res) => {
@@ -11,12 +10,9 @@ module.exports = {
       res.sendStatus(403)
     }
   },
+
   POST: async (req, res) => {
     try {
-      authJWT(req)
-
-      // upload image
-
       let sampleFile;
       let uploadPath;
 
@@ -61,9 +57,9 @@ module.exports = {
       res.sendStatus(403)
     }
   },
+
   PUT: async (req, res) => {
     try {
-      authJWT(req)
       const returning = await blogsModel.setBlog(req)
 
       res.send(returning)
@@ -71,14 +67,14 @@ module.exports = {
       res.sendStatus(403)
     }
   },
+
   DELETE: async (req, res) => {
     try {
-      authJWT(req)
       const blog = await blogsModel.deleteBlog(req)
 
       res.send(blog)
     } catch (error) {
       res.sendStatus(403)
     }
-  },
+  }
 }

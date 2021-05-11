@@ -7,6 +7,4 @@ router
   .delete(Like.DELETE)
 
 
-
-
 module.exports = router

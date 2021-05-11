@@ -6,7 +6,4 @@ router
   .get(Numbers.GET)
   .post(Numbers.POST)
 
-
-
-
 module.exports = router

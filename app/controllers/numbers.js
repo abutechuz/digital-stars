@@ -1,5 +1,4 @@
 const NumberModel = require('../models/numbers.js')
-const authJWT = require('../Library/function/auth.js')
 
 module.exports = {
   POST: async (req, res) => {
@@ -11,6 +10,7 @@ module.exports = {
       res.send(error)
     }
   },
+
   GET: async (req, res) => {
     try {
       const numbers = await NumberModel.getNumbers(req)
@@ -19,5 +19,5 @@ module.exports = {
     } catch (error) {
       res.send(error)
     }
-  },
+  }
 }

@@ -1,7 +1,6 @@
 const readF = require("util").promisify(require("fs").readFile)
 const writeF = require("util").promisify(require("fs").writeFile)
 const path = require("path").resolve("info.json")
-const authJWT = require('../library/function/auth')
 
 
 module.exports = {
@@ -26,8 +25,7 @@ module.exports = {
     }
   }, res) => {
     try {
-      // authJWT(req)
-      const blogs = await writeF(path, JSON.stringify({
+      await writeF(path, JSON.stringify({
         address,
         about,
         phone_number,
@@ -40,5 +38,5 @@ module.exports = {
     } catch (error) {
       res.send(error)
     }
-  },
+  }
 }

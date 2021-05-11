@@ -1,16 +1,10 @@
-let {
-  fetch,
-  fetchOne
-} = require("../library/database/postgres")
+let { fetch, fetchOne } = require("../library/database/postgres")
 
 let read = require("reading-time")
 
 const getBlogs = async ({
-  query: {
-    page,
-    limit
-  }
-}) => {
+  query: {page, limit }}) => {
+
   const SQL = `
   select * from blogs
   order by blog_id desc
