@@ -18,7 +18,7 @@ const limiter = rateLimit({
 app.use(xss())
 app.use(helmet())
 app.use(limiter)
-app.use(express.json({ limit: '10kb'}))
+app.use(express.json({ limit: '10kb' }))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../data/')))
@@ -71,11 +71,19 @@ app.use("/info", (req, res, next) => {
 
 app.use('/login', Login)
 
-app.use("/admin" , (req, res, next) => {
+app.use("/admin", (req, res, next) => {
   auth(req, res, next)
 }, Admin)
 
-app.use("/numbers" , Numbers)
+app.use("/numbers", (req, res, next) => {
+  const m = req.method
+
+  if (m === 'POST') {
+    auth(req, res, next)
+  } else {
+    next()
+  }
+}, Numbers)
 
 app.use((err, req, res, next) => {
   console.log(err)
