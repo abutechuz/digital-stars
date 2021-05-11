@@ -1,6 +1,6 @@
 const auth = async ({ cookies: { token } }, res, next) => {
   const { verify } = require('./jwt.js')
-  const { fetchOne } = require('./database/postgres.js.js')
+  const { fetchOne } = require('../database/postgres.js')
   const SQL = `select user_id from users where user_id = $1`
 
   try {
