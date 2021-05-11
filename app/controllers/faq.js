@@ -4,7 +4,7 @@ const authJWT = require('../library/function/auth.js')
 module.exports = {
   GET: ('/', async (req, res) => {
     try {
-      await authJWT(req)
+      // await authJWT(req)
 
       const faqs = await faqModel.getFaq(req)
 
@@ -16,7 +16,7 @@ module.exports = {
 
   POST: ('/', async (req, res) => {
     try {
-      authJWT(req)
+      // authJWT(req)
       const faqs = await faqModel.addFaq(req)
 
       res.send(faqs)

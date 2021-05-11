@@ -22,6 +22,16 @@ const getBlogs = async ({
   return blogs
 };
 
+const getById = async ({
+  query : {id}
+}) => {
+const SQL = `select * from users where user_id=$1`
+
+const blog = await fetchOne(SQL , id)
+
+return blog
+}
+
 const insertBlog = async ({
   body: {
     blog_title,
@@ -114,5 +124,6 @@ module.exports = {
   getBlogs,
   insertBlog,
   setBlog,
-  deleteBlog
+  deleteBlog,
+  getById
 }
