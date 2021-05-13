@@ -117,6 +117,7 @@ const deleteBlog = async ({
 module.exports = {
   getBlogs,
   insertBlog,
+  getById,
   setBlog,
   deleteBlog
 }
