@@ -56,9 +56,9 @@ app.use('/faq', (req, res, next) => {
   }
 }, FAQ)
 
-app.use("/like", Like)
+app.use('/like', Like)
 
-app.use("/info", (req, res, next) => {
+app.use('/info', (req, res, next) => {
   const m = req.method
 
   if (m === 'POST') {
@@ -71,11 +71,11 @@ app.use("/info", (req, res, next) => {
 
 app.use('/login', Login)
 
-app.use("/admin", (req, res, next) => {
+app.use('/admin', (req, res, next) => {
   auth(req, res, next)
 }, Admin)
 
-app.use("/numbers", (req, res, next) => {
+app.use('/numbers', (req, res, next) => {
   const m = req.method
 
   if (m === 'POST') {

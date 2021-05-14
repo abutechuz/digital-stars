@@ -1,4 +1,4 @@
-const { fetch } = require('../library/database/postgres.js')
+const { fetch, fetchOne } = require('../library/database/postgres.js')
 
 const getFaq = async (req) => {
   const SQL = `select * from faq`
@@ -12,7 +12,7 @@ const addFaq = async ({ body: { question, answer } }) => {
     faq_answer
   ) values ($1, $2) returning *;`
 
-  return await fetch(SQL, question, answer)
+  return await fetchOne(SQL, question, answer)
 }
 
 const removeFaq = async ({ body: { faq_id } }) => {
