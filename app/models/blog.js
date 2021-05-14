@@ -65,16 +65,14 @@ const insertBlog = async ({
 const setBlog = async ({
   body: {
     blog_title,
-    blog_image,
     blog_content,
     blog_author,
-    blog_author_picture,
     blog_author_link,
     blog_tags,
     blog_text,
     blog_id
-  }
-}) => {
+  } 
+},blog_image,blog_author_picture) => {
 
   const SQL = `update blogs set blog_title=$1 ,
   blog_image=$2 ,
@@ -87,11 +85,11 @@ const setBlog = async ({
   const res = await fetchOne(SQL,
     blog_title,
     blog_image,
-    blog_content,
+    JSON.parse(blog_content),
     blog_author,
     blog_author_picture || null,
     blog_author_link || null,
-    blog_tags.map(str => str.replace(/[|&;$%@"#<>()+,-]/g, "")) || [],
+    JSON.parse(blog_tags).map(str => str.replace(/[|&;$%@"#<>()+,-]/g, "")) || [],
     read(blog_text).time,
     blog_id
   )
