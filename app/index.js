@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit')
 const xss = require('xss-clean')
 const helmet = require('helmet')
 const path = require('path')
+const jwt = require('jsonwebtoken');
 
 
 const app = express()
@@ -38,7 +39,7 @@ const Numbers = require('./routes/numbers.js')
 app.use('/blogs', (req, res, next) => {
   try {
     const m = req.method
-
+    
     if (m !== 'GET') {
       auth(req, res, next)
     } else {
@@ -47,13 +48,13 @@ app.use('/blogs', (req, res, next) => {
   } catch (error) {
     res.status(401).send({error: error.message})
   }
-
+  
 }, Blog)
 
 app.use('/faq', (req, res, next) => {
   try {
     const m = req.method
-
+    
     if (m === 'POST') {
       auth(req, res, next)
     } else {
@@ -69,7 +70,7 @@ app.use('/like', Like)
 app.use('/info', (req, res, next) => {
   try {
     const m = req.method
-
+    
     if (m === 'POST') {
       auth(req, res, next)
     } else {
@@ -78,7 +79,7 @@ app.use('/info', (req, res, next) => {
   } catch (error) {
     res.status(401).send({error: error.message})
   }
-
+  
 }, Info)
 
 app.use('/login', Login)
@@ -92,22 +93,14 @@ app.use('/admin', (req, res, next) => {
 }, Admin)
 
 app.use('/numbers', (req, res, next) => {
-  try {
-    const m = req.method
-
-    if (m === 'GET') {
-      auth(req, res, next)
+  jwt.verify(req.cookies.token, "JWT_KEY", (err, user_id) => {
+    if (err) {
+      return res.json(err).sendStatus(403);
     } else {
-      next()
+      req.user_id = user_id;
+      next();
     }
-  } catch (error) {
-    res.status(401).send({ error: error.message })
-  }
+  });
 }, Numbers)
-
-app.use((err, req, res, next) => {
-  console.log(err)
-  next()
-})
 
 module.exports = app
