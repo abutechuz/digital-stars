@@ -31,12 +31,11 @@ const insertBlog = async ({
     blog_title,
     blog_content,
     blog_author,
-    blog_author_picture,
     blog_author_link,
     blog_tags,
     blog_text
   }
-}, blog_image) => {
+}, blog_image , blog_author_picture) => {
 
   const SQL = `insert into blogs (
     blog_title,
@@ -52,11 +51,11 @@ const insertBlog = async ({
   const response = await fetchOne(SQL,
     blog_title,
     blog_image,
-    blog_content,
+    JSON.parse(blog_content),
     blog_author,
     blog_author_picture || null,
     blog_author_link || null,
-    blog_tags.map(str => str.replace(/[|&;$%@"#<>()+,-]/g, "")) || [],
+    JSON.parse(blog_tags).map(str => str.replace(/[|&;$%@"#<>()+,-]/g, "")) || [],
     read(blog_text).time
   )
 
