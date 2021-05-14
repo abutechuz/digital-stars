@@ -36,35 +36,47 @@ const Numbers = require('./routes/numbers.js')
 
 // ENDPOINTS
 app.use('/blogs', (req, res, next) => {
-  const m = req.method
+  try {
+    const m = req.method
 
-  if (m !== 'GET') {
-    auth(req, res, next)
-  } else {
-    next()
+    if (m !== 'GET') {
+      auth(req, res, next)
+    } else {
+      next()
+    }
+  } catch (error) {
+    res.status(401).send({error: error.message})
   }
 
 }, Blog)
 
 app.use('/faq', (req, res, next) => {
-  const m = req.method
+  try {
+    const m = req.method
 
-  if (m === 'POST') {
-    auth(req, res, next)
-  } else {
-    next()
+    if (m === 'POST') {
+      auth(req, res, next)
+    } else {
+      next()
+    }
+  } catch (error) {
+    res.status(401).send({error: error.message})
   }
 }, FAQ)
 
 app.use('/like', Like)
 
 app.use('/info', (req, res, next) => {
-  const m = req.method
+  try {
+    const m = req.method
 
-  if (m === 'POST') {
-    auth(req, res, next)
-  } else {
-    next()
+    if (m === 'POST') {
+      auth(req, res, next)
+    } else {
+      next()
+    }
+  } catch (error) {
+    res.status(401).send({error: error.message})
   }
 
 }, Info)
@@ -72,16 +84,24 @@ app.use('/info', (req, res, next) => {
 app.use('/login', Login)
 
 app.use('/admin', (req, res, next) => {
-  auth(req, res, next)
+  try {
+    auth(req, res, next)
+  } catch (error) {
+    ress.status(401).send({error: error.message})
+  }
 }, Admin)
 
 app.use('/numbers', (req, res, next) => {
-  const m = req.method
+  try {
+    const m = req.method
 
-  if (m === 'POST') {
-    auth(req, res, next)
-  } else {
-    next()
+    if (m === 'POST') {
+      auth(req, res, next)
+    } else {
+      next()
+    }
+  } catch (error) {
+    res.status(401).send({ error: error.message })
   }
 }, Numbers)
 
