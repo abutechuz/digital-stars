@@ -95,7 +95,7 @@ app.use('/numbers', (req, res, next) => {
   try {
     const m = req.method
 
-    if (m === 'POST') {
+    if (m === 'GET') {
       auth(req, res, next)
     } else {
       next()
