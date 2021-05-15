@@ -8,7 +8,7 @@ const login = ('/', async (req, res) => {
 
     res.cookie('token', token ,{ httpOnly: true }).send(token)
   } catch (error) {
-    res.status(401).send(error)
+    res.status(401).send({message : "User is not defined"})
   }
 })
 

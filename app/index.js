@@ -5,8 +5,6 @@ const rateLimit = require('express-rate-limit')
 const xss = require('xss-clean')
 const helmet = require('helmet')
 const path = require('path')
-const jwt = require('jsonwebtoken');
-
 
 const app = express()
 const auth = require('./library/function/auth.js')
@@ -36,71 +34,18 @@ const Numbers = require('./routes/numbers.js')
 
 
 // ENDPOINTS
-app.use('/blogs', (req, res, next) => {
-  try {
-    const m = req.method
-    
-    if (m !== 'GET') {
-      auth(req, res, next)
-    } else {
-      next()
-    }
-  } catch (error) {
-    res.status(401).send({error: error.message})
-  }
-  
-}, Blog)
+app.use('/blogs', async (req, res, next) => await auth(req , res , next , ['GET']), Blog)
 
-app.use('/faq', (req, res, next) => {
-  try {
-    const m = req.method
-    
-    if (m === 'POST') {
-      auth(req, res, next)
-    } else {
-      next()
-    }
-  } catch (error) {
-    res.status(401).send({error: error.message})
-  }
-}, FAQ)
+app.use('/faq', async (req, res, next) => await auth(req , res , next , ['GET']), FAQ)
 
 app.use('/like', Like)
 
-app.use('/info', (req, res, next) => {
-  try {
-    const m = req.method
-    
-    if (m === 'POST') {
-      auth(req, res, next)
-    } else {
-      next()
-    }
-  } catch (error) {
-    res.status(401).send({error: error.message})
-  }
-  
-}, Info)
+app.use('/info', async (req, res, next) => await auth(req , res , next , ['GET']), Info)
 
 app.use('/login', Login)
 
-app.use('/admin', (req, res, next) => {
-  try {
-    auth(req, res, next)
-  } catch (error) {
-    ress.status(401).send({error: error.message})
-  }
-}, Admin)
+app.use('/admin', async (req, res, next) => await auth(req , res , next , []), Admin)
 
-app.use('/numbers', (req, res, next) => {
-  jwt.verify(req.cookies.token, "JWT_KEY", (err, user_id) => {
-    if (err) {
-      return res.json(err).sendStatus(403);
-    } else {
-      req.user_id = user_id;
-      next();
-    }
-  });
-}, Numbers)
+app.use('/numbers',async (req, res, next) => await auth(req , res , next , ['POST']), Numbers)
 
 module.exports = app
