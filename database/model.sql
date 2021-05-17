@@ -12,6 +12,13 @@ create table users(
 
 create unique index user_login_idx on users(lower(user_login));
 
+create table slides (
+slide_id serial not null primary key ,
+slide_title varchar(256) not null ,
+slide_subtitle varchar(128) not null,
+slide_time timestamp not null default current_timestamp,
+slide_img_src varchar(4096) not null
+);
 
 create table blogs(
   blog_id serial not null primary key,

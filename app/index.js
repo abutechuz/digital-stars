@@ -31,7 +31,7 @@ const Login = require('./routes/login.js')
 const Info = require('./routes/info.js')
 const Admin = require('./routes/admin.js')
 const Numbers = require('./routes/numbers.js')
-
+const Slide = require('./routes/slide.js')
 
 // ENDPOINTS
 app.use('/blogs', async (req, res, next) => await auth(req , res , next , ['GET']), Blog)
@@ -47,5 +47,7 @@ app.use('/login', Login)
 app.use('/admin', async (req, res, next) => await auth(req , res , next , []), Admin)
 
 app.use('/numbers',async (req, res, next) => await auth(req , res , next , ['POST']), Numbers)
+
+app.use("/slide" , async (req, res, next) => await auth(req , res , next , ['GET']), Slide)
 
 module.exports = app
