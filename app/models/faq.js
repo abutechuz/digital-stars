@@ -15,14 +15,7 @@ const addFaq = async ({ body: { question, answer } }) => {
   return await fetchOne(SQL, question, answer)
 }
 
-const removeFaq = async ({ body: { faq_id } }) => {
-  const SQL = `delete from faq where faq_id = $1 returning *`
-
-  return await fetch(SQL, faq_id)
-}
-
 module.exports = {
   getFaq,
-  addFaq,
-  removeFaq
+  addFaq
 }

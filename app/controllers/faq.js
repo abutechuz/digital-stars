@@ -19,15 +19,5 @@ module.exports = {
     } catch (error) {
       res.status(401).send(error)
     }
-  }),
-
-  PUT: ('/', async (req, res) => {
-    try {
-      const faqs = await faqModel.updateFaq(req)
-
-      res.send(faqs)
-    } catch (error) {
-      res.status(401).send(error)
-    }
   })
 }
