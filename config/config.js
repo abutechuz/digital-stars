@@ -1,11 +1,13 @@
+require('dotenv').config()
+
 module.exports = {
-	PORT: process.env.PORT || 8080,
+	PORT: process.env.PORT ,
 	DATABASE: {
-		host: 'queenie.db.elephantsql.com',
-		user: 'wcdnbtqk',
-		password: 'iruAlmbEmXADIFiDdv6b7c5TkqLBE3Te',
-		database: 'wcdnbtqk',
-		port: 5432
+		host: process.env.DATABASE_HOST,
+		user: process.env.DATABASE_USER ,
+		password: process.env.DATABASE_PASSWORD,
+		database: process.env.DATABASE_DB ,
+		port: process.env.DATABASE_PORT
 	},
-	JWT_KEY: 'SecretkeYY'
+	JWT_KEY: process.env.JWT_KEY
 }
