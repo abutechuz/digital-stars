@@ -31,7 +31,7 @@ const addFaq = async ({ body: { faq_question_uz,
 }
 
 const deleteFaq = async ({body : {faq_id}}) => {
-  const SQL = `delete from faq where faq_id=$1`
+  const SQL = `delete from faq where faq_id=$1 returning *`
 
   return await fetchOne(SQL , faq_id)
 }
