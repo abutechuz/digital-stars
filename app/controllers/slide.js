@@ -18,7 +18,7 @@ module.exports = {
       const {
         v4: uuidv4
       } = require('uuid');
-      if (!req.files || Object.keys(req.files).length === 0 || slide_image.mimetype.match(/image/g)) {
+      if (!req.files || Object.keys(req.files).length === 0 || !slide_image.mimetype.match(/image/g)) {
         return res.status(400).send({message : 'File ERROR'});
       }
       
