@@ -6,28 +6,15 @@ const getFaq = async (req) => {
   return await fetch(SQL)
 }
 
-const addFaq = async ({ body: { faq_question_uz,
-  faq_answer_uz,
-  faq_question_ru,
-  faq_answer_ru,
-  faq_question_en,
-  faq_answer_en
+const addFaq = async ({ body: { faq_question,
+  faq_answer
  } }) => {
   const SQL = `insert into faq(
-    faq_question_uz,
-    faq_answer_uz,
-    faq_question_ru,
-    faq_answer_ru,
-    faq_question_en,
-    faq_answer_en
-  ) values ($1, $2 , $3 , $4 ,$5 , $6) returning *;`
+    faq_question,
+    faq_answer
+  ) values ($1, $2) returning *;`
 
-  return await fetchOne(SQL, faq_question_uz,
-    faq_answer_uz,
-    faq_question_ru,
-    faq_answer_ru,
-    faq_question_en,
-    faq_answer_en)
+  return await fetchOne(SQL, faq_question, faq_answer)
 }
 
 const deleteFaq = async ({body : {faq_id}}) => {
