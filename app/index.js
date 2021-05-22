@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const fileUpload = require('express-fileupload')
 const rateLimit = require('express-rate-limit')
@@ -15,6 +16,7 @@ const limiter = rateLimit({
 })
 
 app.use(xss())
+app.use(cors({origin:'*'}))
 app.use(helmet())
 app.use(limiter)
 app.use(express.json({ limit: '10kb' }))
