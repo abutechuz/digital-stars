@@ -16,7 +16,7 @@ const limiter = rateLimit({
 })
 
 app.use(xss())
-app.use(cors({origin:'*'}))
+app.use(cors())
 app.use(helmet())
 app.use(limiter)
 app.use(express.json())
