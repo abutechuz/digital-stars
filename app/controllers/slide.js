@@ -11,8 +11,7 @@ module.exports = {
   },
   
   POST: async (req, res) => {
-    // try {
-      console.log(req.files ,req.body);
+    try {
       let slide_image = req.files.slide_image || {mimetype: ""} ;
       let uploadPath;
       
@@ -41,9 +40,9 @@ module.exports = {
       
       const slide = await slidesModel.insertSlide(req, slide_image_src)
       res.send(slide)
-    // } catch (error) {
-      // res.send(error)
-    // }
+    } catch (error) {
+      res.send(error)
+    }
   },
   
   DELETE: async (req, res) => {
