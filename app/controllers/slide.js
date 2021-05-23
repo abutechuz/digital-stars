@@ -13,6 +13,7 @@ module.exports = {
   POST: async (req, res) => {
     // try {
       let slide_image = req.body.slide_image || {mimetype: ""} ;
+      console.log(slide_image);
       let uploadPath;
       
       const {
