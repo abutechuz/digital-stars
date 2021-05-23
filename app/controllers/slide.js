@@ -42,7 +42,7 @@ module.exports = {
       const slide = await slidesModel.insertSlide(req, slide_image_src)
       res.send(slide)
     // } catch (error) {
-      res.send(error)
+      // res.send(error)
     // }
   },
   
