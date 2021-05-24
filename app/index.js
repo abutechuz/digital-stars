@@ -50,6 +50,6 @@ app.use('/admin', async (req, res, next) => await auth(req , res , next , []), A
 
 app.use('/numbers',async (req, res, next) => await auth(req , res , next , ['POST']), Numbers)
 
-app.use("/slide" , async (req, res, next) => await auth(req , res , next , ['GET' , 'POST']), Slide)
+app.use("/slide" , async (req, res, next) => await auth(req , res , next , ['GET']), Slide)
 
 module.exports = app
