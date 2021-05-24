@@ -6,7 +6,7 @@ const login = ('/', async (req, res) => {
     const user = await loginFunction(req)
     const token = await sign(await user, { expiresIn: 60 * 60 * 60 })
 
-    res.cookie('token', token ,{ httpOnly: true }).send({token , ...user})
+    res.send({token , ...user})
   } catch (error) {
     res.status(401).send({message : "User is not defined"})
   }
