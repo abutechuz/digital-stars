@@ -25,7 +25,6 @@ module.exports = {
       let blog_image;
       let blog_author_picture;
       let uploadPath;
-
       const {
         v4: uuidv4
       } = require('uuid');
@@ -86,8 +85,7 @@ module.exports = {
       const blogs = await blogsModel.insertBlog(req, blog_image_src , blog_author_picture_src)
       res.send(blogs)
     } catch (error) {
-      console.log(error)
-      res.sendStatus(403)
+      res.status(403).send({message : error.message})
     }
   },
 
@@ -159,7 +157,6 @@ module.exports = {
       res.send(returning)
 
     } catch (error) {
-      console.log(error)
       res.sendStatus(403)
     }
   },

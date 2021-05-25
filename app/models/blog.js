@@ -51,7 +51,7 @@ const insertBlog = async ({
   const response = await fetchOne(SQL,
     blog_title,
     blog_image,
-    JSON.parse(blog_content),
+    blog_content,
     blog_author,
     blog_author_picture || null,
     blog_author_link || null,
