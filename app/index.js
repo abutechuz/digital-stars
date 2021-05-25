@@ -49,7 +49,7 @@ app.use('/login', Login)
 
 app.use('/admin', async (req, res, next) => await auth(req , res , next , []), Admin)
 
-app.use('/numbers',async (req, res, next) => await auth(req , res , next , ['POST']), Numbers)
+app.use('/numbers',async (req, res, next) => await auth(req , res , next , ['POST' , 'GET']), Numbers)
 
 app.use("/slide" , async (req, res, next) => await auth(req , res , next , ['GET']), Slide)
 

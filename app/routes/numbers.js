@@ -2,8 +2,9 @@ const router = require('express').Router()
 const Numbers = require('../controllers/numbers.js')
 
 router
-  .route('/')
-  .get(Numbers.GET)
-  .post(Numbers.POST)
+  // .get('/',Numbers.GET)
+  .post('/',Numbers.POST)
+  .get('/',Numbers.GET_FORMS)
+
 
 module.exports = router
