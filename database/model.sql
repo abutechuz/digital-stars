@@ -41,10 +41,11 @@ create TABLE faq(
   faq_created  TIMESTAMP with time zone default current_timestamp
 );
 
-create table info(
-  id serial not null primary key,
-  info json not null
-);
+create table members (
+   member_id serial not null primary key,
+member_img varchar(4096) not null,
+member_time timestamp not null default current_timestamp
+)
 
 ------------------
 
