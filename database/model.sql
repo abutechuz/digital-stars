@@ -1,26 +1,27 @@
-create database starter with owner 'postgres' encoding 'utf8';
-create extension pgcrypto;
+CREATE database digital_star with owner 'postgres' encoding 'utf8';
+CREATE extension pgcrypto;
 
-create domain login as varchar(32) check(value ~* '^@?(\w){4,32}$');
+CREATE domain login as varchar(32) check(value~ * '^@?(\w){4,32}$');
 
-create table users(
+CREATE table users(
   user_id serial not null primary key,
   user_login login not null,
   user_password varchar(72) not null
 );
 
 
-create unique index user_login_idx on users(lower(user_login));
+CREATE unique index user_login_idx on users(lower(user_login));
 
-create table slides (
-slide_id serial not null primary key ,
-slide_title varchar(256) not null ,
-slide_subtitle varchar(128) not null,
-slide_time timestamp not null default current_timestamp,
-slide_img_src varchar(4096) not null
+CREATE table slides(
+  slide_id serial not null primary key,
+  slide_title varchar(256) not null,
+  slide_subtitle varchar(128) not null,
+  slide_time timestamp not null
+  default current_timestamp,
+  slide_img_src varchar(4096) not null
 );
 
-create table blogs(
+CREATE table blogs(
   blog_id serial not null primary key,
   blog_title varchar(512) not null,
   blog_image varchar(4096) not null,
@@ -29,53 +30,24 @@ create table blogs(
   blog_author_picture varchar(4096),
   blog_author_link varchar(4096),
   blog_reading_time int not null,
-  blog_like int default 0,
+  blog_like int
+  default 0,
   blog_tags text[],
-  blog_created TIMESTAMP with time zone default current_timestamp
+  blog_CREATEd TIMESTAMP with time zone
+  default current_timestamp
 );
 
-create TABLE faq(
+CREATE TABLE faq(
   faq_id serial not null primary key,
   faq_question varchar(512) not null,
   faq_answer varchar(2048) not null,
-  faq_created  TIMESTAMP with time zone default current_timestamp
+  faq_CREATEd TIMESTAMP with time zone
+  default current_timestamp
 );
 
-create table members (
-   member_id serial not null primary key,
-member_img varchar(4096) not null,
-member_time timestamp not null default current_timestamp
-)
-
-------------------
-
-insert into faq(
-  faq_question,
-  faq_answer
-) values (
-  'Hello world nima degani?',
-  'Lorem ipsim dolor sit amet...'
-);
-
-insert into blogs(
-  blog_title,
-  blog_image,
-  blog_content,
-  blog_author,
-  blog_author_picture,
-  blog_author_link,
-  blog_reading_time,
-  blog_tags,
-  blog_like
-) values (
-  'title',
-  'image.png',
-  '{ "jsj": "json"}',
-  'authorbek',
-  'author-image.png',
-  'htpps://ssdasd/asd/asd',
-  200,
-  '{"hello", "web", "asd"}',
-  1
-)
-;
+CREATE table members(
+    member_id serial not null primary key,
+    member_img varchar(4096) not null,
+    member_time timestamp not null
+    default current_timestamp
+  )
