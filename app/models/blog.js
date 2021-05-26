@@ -33,7 +33,8 @@ const insertBlog = async ({
     blog_author,
     blog_author_link,
     blog_tags,
-    blog_text
+    blog_text,
+    blog_theme
   }
 }, blog_image , blog_author_picture) => {
 
@@ -45,8 +46,9 @@ const insertBlog = async ({
     blog_author_picture,
     blog_author_link,
     blog_tags,
-    blog_reading_time
-    ) values ($1,$2,$3,$4,$5,$6,$7,$8) returning *`
+    blog_reading_time,
+    blog_theme
+    ) values ($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *`
 
   const response = await fetchOne(SQL,
     blog_title,
@@ -56,7 +58,8 @@ const insertBlog = async ({
     blog_author_picture || null,
     blog_author_link || null,
     JSON.parse(blog_tags).map(str => str.replace(/[|&;$%@"#<>()+,-]/g, "")) || [],
-    read(blog_text).time
+    read(blog_text).time,
+    blog_theme
   )
 
   return response
@@ -70,6 +73,7 @@ const setBlog = async ({
     blog_author_link,
     blog_tags,
     blog_text,
+    blog_theme,
     blog_id
   } 
 },blog_image,blog_author_picture) => {
@@ -81,7 +85,7 @@ const setBlog = async ({
   blog_author_picture=$5,
   blog_author_link=$6,
   blog_tags=$7,
-  blog_reading_time=$8 where blog_id=$9 returning *`
+  blog_reading_time=$8 , blog_theme=$9 where blog_id=$10 returning *`
   const res = await fetchOne(SQL,
     blog_title,
     blog_image,
@@ -91,6 +95,7 @@ const setBlog = async ({
     blog_author_link || null,
     JSON.parse(blog_tags).map(str => str.replace(/[|&;$%@"#<>()+,-]/g, "")) || [],
     read(blog_text).time,
+    blog_theme,
     blog_id
   )
 
