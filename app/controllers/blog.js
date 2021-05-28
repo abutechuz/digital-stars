@@ -21,7 +21,7 @@ module.exports = {
   },
 
   POST: async (req, res) => {
-    // try {
+    try {
       let blog_image;
       let blog_author_picture;
       let uploadPath;
@@ -84,9 +84,9 @@ module.exports = {
 
       const blogs = await blogsModel.insertBlog(req, blog_image_src , blog_author_picture_src)
       res.send(blogs)
-    // } catch (error) {
-    //   res.status(403).send({message : error.message})
-    // }
+    } catch (error) {
+      res.status(403).send({message : error.message})
+    }
   },
 
   PUT: async (req, res) => {
